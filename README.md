@@ -1,7 +1,7 @@
 Integrantes:   
-Alan Medina
-Patricio Martinez 
-Guillermo Fernandez          
+Alan Medina - 
+Patricio Martinez - 
+Guillermo Fernandez -    
 Mario Villena            
    
 Link al video de la explicacion: https://www.youtube.com/watch?v=GWowj5HHofs
