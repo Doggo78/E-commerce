@@ -1,5 +1,5 @@
 Integrantes:   
-Alan Medina 
+Alan Medina # or
 Patricio Martinez 
 Guillermo Fernandez          
 Mario Villena            
