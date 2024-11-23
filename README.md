@@ -1,10 +1,12 @@
-///////////////////////////////////////////////////////
-Integrantes:   Alan Medina
-               Patricio Martinez
-               Guillermo Fernandez
-               Mario Villena
-////////////////////////////////////////////////////////////////
+Integrantes:   
+Alan Medina 
+Patricio Martinez 
+Guillermo Fernandez          
+Mario Villena            
+   
 Link al video de la explicacion: https://www.youtube.com/watch?v=GWowj5HHofs
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
