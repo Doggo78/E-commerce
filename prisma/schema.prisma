@@ -1,0 +1,65 @@
+datasource db {
+  provider = "postgres" // O "mysql", "sqlite", dependiendo de tu base de datos
+  url      = env("DATABASE_URL") // URL que apunta a tu base de datos
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  role     String   @default("CLIENT") // "ADMIN" o "CLIENT"
+  likes    Like[]   // Relación con los productos que le ha dado "like"
+  ratings  Rating[] // Relación con los productos que ha puntuado
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  stock       Int      @default(0) // Cantidad en stock
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  images      Image[]  // Relación uno a muchos con el modelo Image
+  likes       Like[]   // Relación con los usuarios que han dado "like"
+  ratings     Rating[] // Relación con las puntuaciones
+}
+
+model Rating {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  stars     Int      // Valor de la puntuación de 1 a 5
+  createdAt DateTime @default(now()) // Fecha en la que se dio la puntuación
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique // Añadido @unique
+  products Product[] // Relación uno a muchos con productos
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  url       String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId]) // Índice único para evitar múltiples likes del mismo usuario en el mismo producto
+}
